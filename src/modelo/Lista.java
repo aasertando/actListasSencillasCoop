@@ -84,9 +84,9 @@ public class Lista {
     //debe recibir los datos ya validados, sino explota todo
     public Nodo crearNodo(Estudiante e) throws EstudianteException {
 
-        Nodo b = buscarEstudiantePorId(e.id);
+        Nodo p = buscarEstudiantePorId(e.id);
 
-        if (b != null) {
+        if (p != null) {
             throw new EstudianteException("El estudiante con el id: " + e.id + " ya existe");
         }
 
@@ -94,26 +94,63 @@ public class Lista {
         return info;
     }
 
-    public void añadirNodoAlFinal() {
+    //este metodo no tiene ninguna validacion, manda los datos bien o explota todo
+    public void añadirNodoAlFinal(Estudiante e) throws EstudianteException {
 
+        Nodo info = crearNodo(e);
+
+        if (getIsEmpty()) {
+            cab = info;
+        } else {
+
+            Nodo p = getLast();
+            p.sig = info;
+        }
     }
 
     public void añadirNodoEnMedio(Nodo info) {
 
+        if (getIsEmpty()) {
+            cab = info;
+        }
+
     }
 
-    public void añadirNodoAlInicio() {
+    public void añadirNodoAlInicio(Nodo info) {
 
+        if (getIsEmpty()) {
+            cab = info;
+        } else {
+            info.sig = cab;
+            cab = info;
+        }
     }
 
+    //                                  nombre              e                                          p
+    //p.e.nombre es el el nombre del estudiante que está en ese nodo
     public Nodo buscarEstudiantePorNombre(String nombre) {
-        return null;
+
+        if (getIsEmpty()) {
+            return null;
+        } else {
+
+            Nodo p = cab;
+            while (p != null) {
+                if (nombre.equals(p.e.nombre)) {
+                    return p;
+                } else {
+                    p = p.sig;
+                }
+            }
+            return null;
+        }
     }
 
     public boolean eliminarEstudiantePorId(String id) {
         return false;
     }
 
+    //informes
     //1
     public Estudiante[] estudianteMayorEdad(String grado) {
         return null;
