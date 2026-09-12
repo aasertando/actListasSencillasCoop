@@ -4,6 +4,8 @@
  */
 package modelo;
 
+import exceptions.EstudianteException;
+
 /**
  *
  * @author aser
@@ -43,11 +45,53 @@ public class Lista {
     }
 
     public Nodo getLast() {
-        return null;
+
+        if (getIsEmpty()) {
+            return null;
+        } else {
+            Nodo p = cab;
+
+            while (p.sig != null) {
+                p = p.sig;
+            }
+
+            return p;
+        }
     }
 
-    public Nodo crearNodo(Estudiante e) {
-        return null;
+    //                        id              e                                          p
+    //p.e.id es el la id del estudiante que está en ese nodo
+    public Nodo buscarEstudiantePorId(String id) {
+
+        if (getIsEmpty()) {
+            return null;
+        } else {
+
+            Nodo p = cab;
+
+            while (p != null) {
+
+                if (id.equals(p.e.id)) {
+                    return p;
+                } else {
+                    p = p.sig;
+                }
+            }
+            return null;
+        }
+    }
+
+    //debe recibir los datos ya validados, sino explota todo
+    public Nodo crearNodo(Estudiante e) throws EstudianteException {
+
+        Nodo b = buscarEstudiantePorId(e.id);
+
+        if (b != null) {
+            throw new EstudianteException("El estudiante con el id: " + e.id + " ya existe");
+        }
+
+        Nodo info = new Nodo(e);
+        return info;
     }
 
     public void añadirNodoAlFinal() {
@@ -60,10 +104,6 @@ public class Lista {
 
     public void añadirNodoAlInicio() {
 
-    }
-
-    public Nodo buscarEstudiantePorId(String id) {
-        return null;
     }
 
     public Nodo buscarEstudiantePorNombre(String nombre) {

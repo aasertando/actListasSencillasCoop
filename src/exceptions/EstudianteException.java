@@ -2,20 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package modelo;
+package exceptions;
 
 /**
  *
  * @author aser
  */
-public class Nodo {
-    
-    public Nodo sig;
-    public Estudiante e;
+public class EstudianteException extends Exception{
 
-    public Nodo(Estudiante e) {
-        this.e = e;
-        this.sig = null;
+    public EstudianteException(String message) {
+        super(message);
     }
     
 }
