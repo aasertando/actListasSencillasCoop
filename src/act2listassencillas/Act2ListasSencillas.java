@@ -4,6 +4,8 @@
  */
 package act2listassencillas;
 
+import vista.Principal;
+
 /**
  *
  * @author aser
@@ -15,6 +17,10 @@ public class Act2ListasSencillas {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        Principal ventana = new Principal();
+        ventana.setVisible(true);
+        
     }
     
 }

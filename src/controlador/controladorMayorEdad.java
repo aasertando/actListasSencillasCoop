@@ -2,20 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package modelo;
+package controlador;
 
 /**
  *
  * @author aser
  */
-public class Nodo {
-    
-    public Nodo sig;
-    public Estudiante e;
-
-    public Nodo(Nodo sig, Estudiante e) {
-        this.e = e;
-        this.sig = null;
-    }
+public class controladorMayorEdad {
     
 }
